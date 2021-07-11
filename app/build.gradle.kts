@@ -1,8 +1,8 @@
 plugins {
     id("com.android.application")
+    id("dagger.hilt.android.plugin")
     kotlin("android")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
     id("kotlin-android")
 }
 
@@ -49,7 +49,7 @@ android {
 
 dependencies {
 
-    implementation(project(":topheadlines"))
+//    implementation(project(":topheadlines"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
@@ -60,8 +60,6 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.3.0-rc01")
 
     implementation(libs.hilt.android)
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.4.0")
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit.core)
