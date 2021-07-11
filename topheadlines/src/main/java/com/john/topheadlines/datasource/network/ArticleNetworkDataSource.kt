@@ -5,8 +5,12 @@ import com.john.topheadlines.data.service.ArticleApiService
 import com.john.topheadlines.data.service.ArticleNetworkService
 import com.john.topheadlines.datasource.network.utils.ArticleResponseMapper
 import com.john.topheadlines.domain.model.ArticleResponse
+import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ArticleNetworkDataSource
+@Inject
 constructor(
     private val articleApiService: ArticleApiService,
     private val articleResponseMapper: ArticleResponseMapper

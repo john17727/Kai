@@ -3,8 +3,12 @@ package com.john.topheadlines.datasource.network.utils
 import com.john.mvi.data.util.EntityMapper
 import com.john.topheadlines.domain.model.ArticleResponse
 import com.john.topheadlines.domain.network.ArticleResponseEntity
+import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ArticleResponseMapper
+@Inject
 constructor(
     private val articleNetworkMapper: ArticleNetworkMapper
 ): EntityMapper<ArticleResponseEntity, ArticleResponse> {

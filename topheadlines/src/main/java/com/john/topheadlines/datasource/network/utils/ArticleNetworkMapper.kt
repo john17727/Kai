@@ -4,8 +4,12 @@ import com.john.mvi.data.util.EntityMapper
 import com.john.shared.utils.DateUtil
 import com.john.topheadlines.domain.model.Article
 import com.john.topheadlines.domain.network.ArticleNetworkEntity
+import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ArticleNetworkMapper
+@Inject
 constructor(
     private val dateUtil: DateUtil,
     private val sourceNetworkMapper: SourceNetworkMapper

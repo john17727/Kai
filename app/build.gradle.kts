@@ -49,7 +49,7 @@ android {
 
 dependencies {
 
-//    implementation(project(":topheadlines"))
+    implementation(project(":topheadlines"))
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)

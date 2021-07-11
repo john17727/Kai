@@ -34,6 +34,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.0.0-rc01"
+    }
 }
 
 dependencies {
@@ -56,6 +62,6 @@ dependencies {
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso.core)
 
-    implementation(project(":mvi"))
+    api(project(":mvi"))
     api(project(":shared"))
 }
