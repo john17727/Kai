@@ -14,8 +14,13 @@ import com.john.topheadlines.domain.state.TopHeadlinesViewState
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class TopHeadlinesUseCase(
+@Singleton
+class TopHeadlinesUseCase
+@Inject
+constructor(
     private val articleNetworkDataSource: ArticleNetworkDataSource
 ) {
 

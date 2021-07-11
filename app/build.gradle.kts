@@ -57,6 +57,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 
     implementation(libs.bundles.compose)
+    implementation(libs.compose.runtime.livedata)
     implementation("androidx.activity:activity-compose:1.3.0-rc01")
 
     implementation(libs.hilt.android)
