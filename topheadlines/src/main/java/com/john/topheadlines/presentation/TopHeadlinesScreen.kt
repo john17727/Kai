@@ -3,6 +3,7 @@ package com.john.topheadlines.presentation
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -28,7 +29,7 @@ fun TopHeadlinesScreen(
             Text(
                 text = "Top Headlines",
                 style = MaterialTheme.typography.h4,
-                modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
             )
         },
         content = {
@@ -49,15 +50,21 @@ fun TopHeadlinesScreen(
                     )
                 }
             ) {
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    items(state.articleList) { article ->
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+//                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    itemsIndexed(state.articleList) { index, article ->
                         ArticleCard(
                             article = article,
                             modifier = Modifier.padding(
-                                horizontal = 8.dp,
-                                vertical = 8.dp
+                                horizontal = 16.dp,
+//                                vertical = 16.dp
                             )
                         )
+                        if (index < state.articleList.size-1) {
+                            Divider(color = MaterialTheme.colors.onSurface, thickness = 1.dp, modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp))
+                        }
                     }
                 }
             }
@@ -67,30 +74,33 @@ fun TopHeadlinesScreen(
 
 @Composable
 fun ArticleCard(article: Article, modifier: Modifier = Modifier) {
-    Card(modifier = modifier) {
-        Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = modifier.fillMaxSize().padding(vertical = 8.dp)) {
+        Card {
             GlideImage(imageModel = article.urlToImage, contentScale = ContentScale.FillWidth)
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = article.title,
+            style = MaterialTheme.typography.h5
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Text(
-                text = article.title,
-                style = MaterialTheme.typography.h5,
-                modifier = Modifier.padding(16.dp)
+                text = article.source.name,
+                style = MaterialTheme.typography.subtitle1
             )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = article.source.name,
-                    style = MaterialTheme.typography.subtitle1
-                )
-                Text(
-                    text = article.timeSincePublished,
-                    style = MaterialTheme.typography.body1
-                )
-            }
-            Text(text = article.description, modifier = Modifier.padding(16.dp))
+            Text(
+                text = article.timeSincePublished,
+                style = MaterialTheme.typography.body1
+            )
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        if (article.description.isNotEmpty()) {
+            Text(text = article.description, color = MaterialTheme.colors.onSurface)
         }
     }
 }

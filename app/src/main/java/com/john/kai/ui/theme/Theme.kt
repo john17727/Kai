@@ -11,7 +11,8 @@ private val DarkColorPalette = darkColors(
     primary = Purple700,
     primaryVariant = Purple700,
     secondary = KaiOrange,
-    onSecondary = Color.Black
+    onSecondary = Color.Black,
+    onSurface = KaiDefaultText
 )
 
 private val LightColorPalette = lightColors(
@@ -20,13 +21,13 @@ private val LightColorPalette = lightColors(
     secondary = KaiOrange,
     secondaryVariant = KaiOrange,
     onPrimary = Color.Black,
-    onSecondary = Color.White
+    onSecondary = Color.White,
+    onSurface = KaiDefaultText,
 
     /* Other default colors to override
     background = Color.White,
     surface = Color.White,
     onBackground = Color.Black,
-    onSurface = Color.Black,
     */
 )
 
