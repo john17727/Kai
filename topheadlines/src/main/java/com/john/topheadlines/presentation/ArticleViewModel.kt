@@ -34,6 +34,7 @@ constructor(
             is GetTopHeadlinesEvent -> {
                 topHeadlinesUseCase.getTopHeadlines(
                     country = stateEvent.country,
+                    category = stateEvent.category,
                     page = getPage(),
                     stateEvent = stateEvent
                 )
@@ -52,7 +53,7 @@ constructor(
     fun loadFirstPage() {
         setArticlesExhausted(false)
         resetPage()
-        setStateEvent(GetTopHeadlinesEvent("us", 1))
+        setStateEvent(GetTopHeadlinesEvent("us", "general", 1))
     }
 
     fun resetPage() {

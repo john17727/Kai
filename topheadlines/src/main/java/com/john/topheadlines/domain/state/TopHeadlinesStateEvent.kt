@@ -4,7 +4,7 @@ import com.john.mvi.domain.state.StateEvent
 
 sealed class TopHeadlinesStateEvent: StateEvent {
 
-    class GetTopHeadlinesEvent(val country: String, val page: Int) : TopHeadlinesStateEvent() {
+    class GetTopHeadlinesEvent(val country: String, val category: String, val page: Int) : TopHeadlinesStateEvent() {
         override fun errorInfo(): String {
             return "Could not fetch news at this time"
         }

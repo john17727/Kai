@@ -1,5 +1,9 @@
 package com.john.topheadlines.presentation
 
+import android.util.Log
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import com.john.mvi.domain.state.DataState
 import com.john.mvi.presentation.compose.BaseViewModel
 import com.john.topheadlines.domain.state.TopHeadlinesStateEvent
@@ -17,7 +21,7 @@ constructor(
 ) : BaseViewModel<TopHeadlinesStateEvent, TopHeadlinesViewState>() {
 
     init {
-        setEvent(TopHeadlinesStateEvent.GetTopHeadlinesEvent("us", 1))
+        setEvent(TopHeadlinesStateEvent.GetTopHeadlinesEvent("us", "General",1))
     }
 
     override fun setInitialState() = TopHeadlinesViewState()
@@ -31,6 +35,7 @@ constructor(
             is TopHeadlinesStateEvent.GetTopHeadlinesEvent -> {
                 topHeadlinesUseCase.getTopHeadlines(
                     country = event.country,
+                    category = event.category,
                     page = event.page,
                     stateEvent = event
                 )
@@ -42,7 +47,7 @@ constructor(
         launchJob(event, job)
     }
 
-    fun refresh() {
-        setEvent(TopHeadlinesStateEvent.GetTopHeadlinesEvent("us", 1))
+    fun onRefreshOrCategoryChange(category: String) {
+        setEvent(TopHeadlinesStateEvent.GetTopHeadlinesEvent("us", category, 1))
     }
 }
