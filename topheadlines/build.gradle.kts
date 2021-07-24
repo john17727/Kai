@@ -55,6 +55,8 @@ dependencies {
 
     api(libs.bundles.retrofit)
 
+    implementation(libs.landscapist.glide)
+
     implementation(libs.bundles.kotlinx.coroutines)
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.8")
 

@@ -53,7 +53,7 @@ constructor(
     fun loadFirstPage() {
         setArticlesExhausted(false)
         resetPage()
-        setStateEvent(GetTopHeadlinesEvent("us"))
+        setStateEvent(GetTopHeadlinesEvent("us", 1))
     }
 
     fun resetPage() {

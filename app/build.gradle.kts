@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.compose.runtime.livedata)
     implementation("androidx.activity:activity-compose:1.3.0-rc01")
 
+    implementation(libs.accompanist.systemui)
+
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
