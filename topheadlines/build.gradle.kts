@@ -57,6 +57,8 @@ dependencies {
 
     implementation(libs.landscapist.glide)
 
+    implementation(libs.accompanist.swiperefresh)
+
     implementation(libs.bundles.kotlinx.coroutines)
 //    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.8")
 

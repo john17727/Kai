@@ -20,7 +20,6 @@ constructor(
     private val topHeadlinesUseCase: TopHeadlinesUseCase
 ) : BaseViewModel<TopHeadlinesViewState>() {
     override fun handleNewData(data: TopHeadlinesViewState) {
-        Log.i("DEBUG", "handleNewData ")
         data.numArticles?.let {
             setTotalArticles(it)
         }

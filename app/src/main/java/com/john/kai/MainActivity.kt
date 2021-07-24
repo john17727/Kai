@@ -43,6 +43,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun TopHeadlinesMainScreen(headlinesViewModel: HeadlinesViewModel) {
         val state = headlinesViewModel.viewState.value
-        TopHeadlinesScreen(state)
+        val isLoading = headlinesViewModel.isLoading.value
+        TopHeadlinesScreen(state, isLoading, headlinesViewModel::refresh)
     }
 }

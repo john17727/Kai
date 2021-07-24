@@ -23,8 +23,8 @@ abstract class BaseViewModel<Event : StateEvent, UiState : ViewState> : ViewMode
 
     val dataChannelManager: DataChannelManager<UiState> =
         object : DataChannelManager<UiState>() {
-
             override fun handleNewData(data: UiState) {
+                _isLoading.value = false
 //                this@BaseViewModel.handleNewState(data)
                 setState { data }
             }
@@ -35,6 +35,9 @@ abstract class BaseViewModel<Event : StateEvent, UiState : ViewState> : ViewMode
 
     private val _viewState: MutableState<UiState> = mutableStateOf(initialState)
     val viewState: State<UiState> = _viewState
+
+    private val _isLoading: MutableState<Boolean> = mutableStateOf(false)
+    val isLoading: State<Boolean> = _isLoading
 
     private val _event: MutableSharedFlow<Event> = MutableSharedFlow()
 
@@ -63,8 +66,10 @@ abstract class BaseViewModel<Event : StateEvent, UiState : ViewState> : ViewMode
 
     abstract fun handleEvents(event: Event)
 
-    fun launchJob(stateEvent: StateEvent, jobFunction: Flow<DataState<UiState>?>) =
+    fun launchJob(stateEvent: StateEvent, jobFunction: Flow<DataState<UiState>?>) {
+        _isLoading.value = stateEvent.shouldDisplayProgressBar()
         dataChannelManager.launchJob(stateEvent, jobFunction)
+    }
 
     fun emitInvalidStateEvent(stateEvent: Event) = flow {
         emit(

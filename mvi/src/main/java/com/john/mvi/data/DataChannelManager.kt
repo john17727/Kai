@@ -2,6 +2,7 @@ package com.john.mvi.data
 
 import com.john.mvi.data.message.MessageStack
 import com.john.mvi.data.state.StateEventManager
+import com.john.mvi.domain.message.MessageType
 import com.john.mvi.domain.message.StateMessage
 import com.john.mvi.domain.state.DataState
 import com.john.mvi.domain.state.StateEvent
@@ -61,7 +62,9 @@ abstract class DataChannelManager<ViewState> {
     }
 
     private fun handleNewStateMessage(stateMessage: StateMessage) {
-        appendStateMessage(stateMessage)
+        if (stateMessage.messageType != MessageType.Success) {
+            appendStateMessage(stateMessage)
+        }
     }
 
     private fun appendStateMessage(stateMessage: StateMessage) {

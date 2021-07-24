@@ -41,4 +41,8 @@ constructor(
         }
         launchJob(event, job)
     }
+
+    fun refresh() {
+        setEvent(TopHeadlinesStateEvent.GetTopHeadlinesEvent("us", 1))
+    }
 }
